@@ -2,47 +2,50 @@ export { default as weapons } from "./weapons";
 export { default as skills } from "./skills";
 export { default as attacks } from "./attacks";
 
+
 export const elementCap = (element, bonus) => {
-    let cap = 0;
-    if (element < 150) {
-        cap = 40;
-    } else if (element >= 150 && element < 210) {
-        cap = 50;
-    } else if (element >= 210 && element < 420) {
-        cap = Math.round(element/3) - 10;
-    } else if (element >= 420 && element < 480) {
-        cap = 130;
-    } else if (element >= 480 && element < 540) {
-        cap = 140;
-    } else {
-        cap = 150;
-    }
-    return Math.min(cap, bonus);
+  let cap;
+  const isBetween = (min, max) => (element >= min && element < max);
+
+  if (element < 150) {
+    cap = 40;
+  } else if (isBetween(150, 210)){
+    cap = 50;
+  } else if (isBetween(210, 420)) {
+    cap = Math.round(element / 3) - 10;
+  } else if (isBetween(420, 480)) {
+    cap = 130;
+  } else if (isBetween(480, 540)) {
+    cap = 140;
+  } else {
+    cap = 150;
+  }
+  return Math.min(cap, bonus);
 }
 
-export const createReducer = (initialState, actionHandlers) => {
+  export const createReducer = (initialState, actionHandlers) => {
     return function reducer(state = initialState, action) {
-        if (actionHandlers.hasOwnProperty(action.type)) {
-            return actionHandlers[action.type](state, action)
-        } else {
-            return state
-        }
+      if (actionHandlers.hasOwnProperty(action.type)) {
+        return actionHandlers[action.type](state, action)
+      } else {
+        return state
+      }
     }
-}
+  }
 
-export const coatings = {
+  export const coatings = {
     none: "none",
     spread: "spread",
     power: "power"
-}
+  }
 
-export const coatingModifiers = {
+  export const coatingModifiers = {
     none: 1,
     spread: 1.25,
     power: 1.3
-}
+  }
 
-export const weaponTypes = [
+  export const weaponTypes = [
     "great-sword",
     "dual-blades",
     "long-sword",
@@ -57,9 +60,9 @@ export const weaponTypes = [
     "light-bowgun",
     "heavy-bowgun",
     "bow"
-]
+  ]
 
-export const weaponTypeNames = {
+  export const weaponTypeNames = {
     "great-sword": "Greatsword",
     "dual-blades": "Dual Blades",
     "long-sword": "Longsword",
@@ -74,9 +77,9 @@ export const weaponTypeNames = {
     "light-bowgun": "Light Bowgun",
     "heavy-bowgun": "Heavy Bowgun",
     "bow": "Bow"
-}
+  }
 
-export const weaponTypeModifiers = {
+  export const weaponTypeModifiers = {
     "great-sword": 4.8,
     "dual-blades": 1.4,
     "long-sword": 3.3,
@@ -91,40 +94,45 @@ export const weaponTypeModifiers = {
     "light-bowgun": 1.3,
     "heavy-bowgun": 1.5,
     "bow": 1.2
-}
+  }
 
-export const sharpness = {
+  export const sharpness = {
+    purple: "purple",
     white: "white",
     blue: "blue",
     green: "green",
     yellow: "yellow",
     orange: "orange",
     red: "red"
-}
+  }
 
-export const sharpnessModifiers = {
+  export const sharpnessModifiers = {
     red: {
-        physical: .5,
-        elemental: .25
+      physical: .5,
+      elemental: .25
     },
     orange: {
-        physical: .75,
-        elemental: .5
+      physical: .75,
+      elemental: .5
     },
     yellow: {
-        physical: 1,
-        elemental: .75
+      physical: 1,
+      elemental: .75
     },
     green: {
-        physical: 1.05,
-        elemental: 1
+      physical: 1.05,
+      elemental: 1
     },
     blue: {
-        physical: 1.2,
-        elemental: 1.0625
+      physical: 1.2,
+      elemental: 1.0625
     },
     white: {
-        physical: 1.32,
-        elemental: 1.125
+      physical: 1.32,
+      elemental: 1.125
+    },
+    purple: {
+      physical: 1.39,
+      elemental: 1.2
     }
-}
+  }

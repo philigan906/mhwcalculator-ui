@@ -5,6 +5,9 @@ const SharpnessPicker = props => {
     const style = {width:"80px", height:"20px", border:"1px solid #DDD", borderRight:"none", cursor:"pointer", textAlign:"center"};
     return (
         <div style={{display:"flex"}}>
+            <div style={{...style, backgroundColor:"#cc99ff", color: "white"}} onClick={() => props.onChange(sharpness.purple)}>
+                {props.sharpness === sharpness.purple? <i className="fa fa-check"/> : null}
+            </div>
             <div style={{...style, backgroundColor:"#ffffff"}} onClick={() => props.onChange(sharpness.white)}>
                 {props.sharpness === sharpness.white ? <i className="fa fa-check"/> : null}
             </div>
