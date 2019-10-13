@@ -5,17 +5,17 @@ export { default as attacks } from "./attacks";
 
 export const elementCap = (element, bonus) => {
   let cap;
-  const isBetween = (min, max) => (element >= min && element < max);
+  const elementIsBetween = (min, max) => (element >= min && element < max);
 
   if (element < 150) {
     cap = 40;
-  } else if (isBetween(150, 210)){
+  } else if (elementIsBetween(150, 210)){
     cap = 50;
-  } else if (isBetween(210, 420)) {
+  } else if (elementIsBetween(210, 420)) {
     cap = Math.round(element / 3) - 10;
-  } else if (isBetween(420, 480)) {
+  } else if (elementIsBetween(420, 480)) {
     cap = 130;
-  } else if (isBetween(480, 540)) {
+  } else if (elementIsBetween(480, 540)) {
     cap = 140;
   } else {
     cap = 150;
